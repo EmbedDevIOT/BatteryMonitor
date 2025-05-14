@@ -1,6 +1,14 @@
 #include <BatteryMonitor.h>
 
-BatteryMonitor battery(ADC1_CHANNEL_7, 5.4, 6.9, 130000, 100000);
+// Prescaller for ADC
+#define R1 130000
+#define R2 100000
+
+// Battery voltage limits
+#define BATTERY_VOLTAGE_MIN 5.4
+#define BATTERY_VOLTAGE_MAX 6.9
+
+BatteryMonitor battery(ADC1_CHANNEL_7, BATTERY_VOLTAGE_MIN, BATTERY_VOLTAGE_MAX, R1, R2);
 
 void setup() {
   Serial.begin(115200);
